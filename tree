@@ -1,1 +1,1 @@
-http=a1.ap.fastqvpn.com:29980, username=436287796966064128, password=8f431ff0-3173-4957-9b2d-4928f0fb786b, udp-relay=false, fast-open=false, obfs=over-tls, tls-verification=false, tag=FASTQ_A】HK/香港_1
+http=a1.ap.fastqvpn.com:29980, username=436287796966064128, password=8f431ff0-3173-4957-9b2d-4928f0fb786b, over-tls=true, fast-open=false, tls-verification=true, tag=HK/香港_1
