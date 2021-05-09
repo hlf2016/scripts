@@ -1,9 +1,40 @@
+const CookieFuliba = '';
 let $ = new Env('福利吧');
 let date = new Date()
 if (typeof $request != "undefined") {
     GetCookie()
 } else {
     checkin()
+}
+
+// 签到脚本
+function checkin() {
+    const appName = "福利吧";
+    $.get({
+        url: 'https://www.wnflb2020.com/plugin.php?id=fx_checkin:checkin&formhash=944cd86e&944cd86e&infloat=yes&handlekey=fx_checkin&inajax=1&ajaxtarget=fwin_content_fx_checkin',
+        headers: {
+            Cookie: CookieFuliba || $.getdata("CookieFuliba"),
+        }
+    }, function (error, response, data) {
+        if (error && !data) {
+            $.log(error);
+            $.msg(appName, "签到请求失败 ‼️‼️", error)
+        } else {
+            $.log(JSON.stringify(data));
+//             if (data.match(/(ÒÑÍê³É|\u606d\u559c\u60a8|��̳΢�š��ᰮ�ƽ�)/)) {
+//                 $.msg(appName, "", date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉")
+//             } else if (data.match(/(ÄúÒÑ|\u4e0b\u671f\u518d\u6765|>��Ǹ������)/)) {
+//                 $.msg(appName, "", date.getMonth() + 1 + "月" + date.getDate() + "日, 已签过 ⚠️")
+//             } else if (data.match(/(ÏÈµÇÂ¼|\u9700\u8981\u5148\u767b\u5f55|�Ҫ�ȵ�¼���ܼ�)/)) {
+//                 $.msg(appName, "", "签到失败, Cookie失效 ‼️‼️")
+//             } else if (response.statusCode == 403) {
+//                 $.msg(appName, "", "服务器暂停签到 ⚠️")
+//             } else {
+//                 $.msg(appName, "", "脚本待更新 ‼️‼️")
+//             }
+        }
+        $.done();
+    })
 }
 
 // 获取 cookie
@@ -14,7 +45,7 @@ function GetCookie() {
             var CookieKey = "CookieFuliba";
             var CookieValue = $request.headers['Cookie'];
             if ($.getdata(CookieKey)) {
-                $.log($.getdata(CookieKey) + '\n' + CookieValue);
+                // $.log($.getdata(CookieKey) + '\n' + CookieValue);
                 if ($.getdata(CookieKey) != CookieValue) {
                     var cookie = $.setdata(CookieValue, CookieKey);
                     if (!cookie) {
