@@ -3,7 +3,6 @@ const CookieFuliba = '';
 let $ = new Env('福利吧');
 let date = new Date()
 if (typeof $request != "undefined") {
-    $.msg("福利吧", "", "开始获取cookie")
     GetCookie()
 } else {
     checkin()
@@ -12,6 +11,7 @@ if (typeof $request != "undefined") {
 // 获取 cookie
 function GetCookie() {
     $.log($request);
+    $.msg("福利吧", "", "开始获取cookie")
 }
 
 // 处理兼容问题的脚本
