@@ -21,17 +21,15 @@ function checkin() {
             $.msg(appName, "签到请求失败 ‼️‼️", error)
         } else {
             $.log(JSON.stringify(data));
-//             if (data.match(/(ÒÑÍê³É|\u606d\u559c\u60a8|��̳΢�š��ᰮ�ƽ�)/)) {
-//                 $.msg(appName, "", date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉")
-//             } else if (data.match(/(ÄúÒÑ|\u4e0b\u671f\u518d\u6765|>��Ǹ������)/)) {
-//                 $.msg(appName, "", date.getMonth() + 1 + "月" + date.getDate() + "日, 已签过 ⚠️")
-//             } else if (data.match(/(ÏÈµÇÂ¼|\u9700\u8981\u5148\u767b\u5f55|�Ҫ�ȵ�¼���ܼ�)/)) {
-//                 $.msg(appName, "", "签到失败, Cookie失效 ‼️‼️")
-//             } else if (response.statusCode == 403) {
-//                 $.msg(appName, "", "服务器暂停签到 ⚠️")
-//             } else {
-//                 $.msg(appName, "", "脚本待更新 ‼️‼️")
-//             }
+            if (data.match(/(签到成功)/)) {
+                $.msg(appName, "", date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉")
+            } else if (data.match(/(签名出错)/)) {
+                $.msg(appName, "", date.getMonth() + 1 + "月" + date.getDate() + "日, 已签过 ⚠️")
+            } else if (data.match(/(Access Denied)/)) {
+                $.msg(appName, "", "Cookie失效，请重新获取Cookie");
+            } else {
+                $.msg(appName, "", "脚本待更新");
+            }
         }
         $.done();
     })
