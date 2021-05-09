@@ -1,5 +1,3 @@
-const CookieFuliba = '';
-
 let $ = new Env('福利吧');
 let date = new Date()
 if (typeof $request != "undefined") {
