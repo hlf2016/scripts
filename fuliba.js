@@ -20,7 +20,7 @@ function checkin() {
             $.log(error);
             $.msg(appName, "签到请求失败 ‼️‼️", error)
         } else {
-            $.log(JSON.stringify(data));
+            // $.log(JSON.stringify(data));
             if (data.match(/(签到成功)/)) {
                 $.msg(appName, "", date.getMonth() + 1 + "月" + date.getDate() + "日, 签到成功 🎉")
             } else if (data.match(/(签名出错)/)) {
