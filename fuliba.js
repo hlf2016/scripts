@@ -1,5 +1,7 @@
-var $ = new Env('福利吧');
-var date = new Date()
+const CookieFuliba = '';
+
+let $ = new Env('福利吧');
+let date = new Date()
 if (typeof $request != "undefined") {
     GetCookie()
 } else {
