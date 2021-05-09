@@ -24,6 +24,7 @@ function GetCookie() {
                         $.msg("", "", "更新" + CookieName + "Cookie成功 🎉");
                     }
                 }
+                $.log(JSON.stringify($request.headers));
             } else {
                 var cookie = $.setdata(CookieValue, CookieKey);
                 if (!cookie) {
