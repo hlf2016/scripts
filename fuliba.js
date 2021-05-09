@@ -10,8 +10,36 @@ if (typeof $request != "undefined") {
 
 // 获取 cookie
 function GetCookie() {
-    $.log($request);
-    $.msg("福利吧", "", "开始获取cookie")
+    try {
+        if ($request.headers && $request.url.match(/www\.wnflb2020\.com/)) {
+            var CookieName = "福利吧";
+            var CookieKey = "CookieFuliba";
+            var CookieValue = $request.headers['Cookie'];
+            if ($.getdata(CookieKey)) {
+                if ($.getdata(CookieKey) != CookieValue) {
+                    var cookie = $.setdata(CookieValue, CookieKey);
+                    if (!cookie) {
+                        $.msg("", "", "更新" + CookieName + "Cookie失败 ‼️");
+                    } else {
+                        $.msg("", "", "更新" + CookieName + "Cookie成功 🎉");
+                    }
+                }
+            } else {
+                var cookie = $.setdata(CookieValue, CookieKey);
+                if (!cookie) {
+                    $.msg("", "", "首次写入" + CookieName + "Cookie失败 ‼️");
+                } else {
+                    $.msg("", "", "首次写入" + CookieName + "Cookie成功 🎉");
+                }
+            }
+        } else {
+            $.msg("写入Cookie失败", "", "请检查匹配URL或配置内脚本类型 ‼️");
+        }
+    } catch (eor) {
+        $.msg("写入Cookie失败", "", "未知错误 ‼️")
+        $.log(JSON.stringify(eor) + "\n" + eor + "\n" + JSON.stringify($request.headers))
+    }
+    $.done();
 }
 
 // 处理兼容问题的脚本
