@@ -3,6 +3,7 @@ const CookieFuliba = '';
 let $ = new Env('福利吧');
 let date = new Date()
 if (typeof $request != "undefined") {
+    $.msg("福利吧", "", "开始获取cookie")
     GetCookie()
 } else {
     checkin()
