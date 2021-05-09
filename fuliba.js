@@ -21,10 +21,10 @@ function GetCookie() {
                     if (!cookie) {
                         $.msg("", "", "更新" + CookieName + "Cookie失败 ‼️");
                     } else {
+                        $.log(JSON.stringify($request.headers));
                         $.msg("", "", "更新" + CookieName + "Cookie成功 🎉");
                     }
                 }
-                $.log(JSON.stringify($request.headers));
             } else {
                 var cookie = $.setdata(CookieValue, CookieKey);
                 if (!cookie) {
