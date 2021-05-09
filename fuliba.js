@@ -14,12 +14,12 @@ function GetCookie() {
             var CookieKey = "CookieFuliba";
             var CookieValue = $request.headers['Cookie'];
             if ($.getdata(CookieKey)) {
+                $.log($.getdata(CookieKey) + '\n' + CookieValue);
                 if ($.getdata(CookieKey) != CookieValue) {
                     var cookie = $.setdata(CookieValue, CookieKey);
                     if (!cookie) {
                         $.msg("", "", "更新" + CookieName + "Cookie失败 ‼️");
                     } else {
-                        $.log(JSON.stringify($request.headers));
                         $.msg("", "", "更新" + CookieName + "Cookie成功 🎉");
                     }
                 }
