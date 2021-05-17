@@ -3,6 +3,6 @@
  "description": "玩一下奥",
  "task": [
     "0 0 * * * https://raw.githubusercontent.com/hlf2016/scripts/main/fuliba.js, tag=福利吧签到, enabled=true",
-    "0 0 * * * https://raw.githubusercontent.com/dompling/Script/master/jd/jd_jr_sign.js, tag=京东金融10豆豆, enabled=true
+    "0 0 * * * https://raw.githubusercontent.com/dompling/Script/master/jd/jd_jr_sign.js, tag=京东金融10豆豆, enabled=true"
   ]
 }
